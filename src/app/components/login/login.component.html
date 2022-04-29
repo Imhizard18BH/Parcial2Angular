@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <form (ngSubmit)="login(formulario)" #formulario="ngForm"
+        class="position-absolute top-50 start-50 translate-middle">
+    <div class="text-center">
+      <i class="fas fa-user fa-5x"></i>
+    </div>
+    <h2 class="text-center mb-5">Iniciar sesión</h2>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email"
+             class="form-control"
+             id="email"
+             name="email"
+             required
+             aria-describedby="emailHelp"
+             [(ngModel)]="usuario.email"
+      >
+      <span *ngIf="formulario.submitted && formulario.controls['email'].errors" class="text-danger animate__animated animate__fadeInLeft">
+        El correo es obligatorio
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password"
+             class="form-control"
+             id="password"
+             name="password"
+             required
+             minlength="8"
+             [(ngModel)]="usuario.password"
+      >
+      <span *ngIf="formulario.submitted && formulario.controls['password'].errors" class="text-danger animate__animated animate__fadeInLeft">
+        Se requieren mínimo 8 caracteres
+      </span>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox"
+             class="form-check-input"
+             id="recordar"
+             name="recordar"
+             [(ngModel)]="recordar"
+      >
+      <label class="form-check-label" for="recordar">Recuérdame</label>
+      <br>
+      <a href="/registro" >¿No tiene una cuenta?</a>
+    </div>
+    <div class="d-grid gap-2 mt-3">
+      <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+    </div>
+
+  </form>
+</div>
